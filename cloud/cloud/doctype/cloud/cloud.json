@@ -1,0 +1,228 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:label",
+ "creation": "2021-10-20 13:32:45.765847",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "personal_details_section",
+  "host_name",
+  "username",
+  "password",
+  "column_break_5",
+  "region",
+  "domain_name",
+  "port_number",
+  "creation_date",
+  "plan_details_section",
+  "label",
+  "stat",
+  "public_ip",
+  "private_ip",
+  "column_break_15",
+  "plan",
+  "quantity",
+  "billing_details_section",
+  "billing_intervell",
+  "price_per_intervel",
+  "column_break_21",
+  "day_until_due",
+  "trail_period_section",
+  "trail_period_start_date",
+  "need_one_month_trail",
+  "column_break_26",
+  "trail_period_end_date",
+  "oci"
+ ],
+ "fields": [
+  {
+   "fieldname": "personal_details_section",
+   "fieldtype": "Section Break",
+   "label": "Personal Details"
+  },
+  {
+   "fieldname": "host_name",
+   "fieldtype": "Data",
+   "label": "Host Name"
+  },
+  {
+   "fieldname": "username",
+   "fieldtype": "Data",
+   "label": "Username"
+  },
+  {
+   "fieldname": "password",
+   "fieldtype": "Password",
+   "label": "Password"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "region",
+   "fieldtype": "Select",
+   "label": "Region",
+   "options": "Saudi\nQatar\nOman\nIndia\nAmerica\nChina"
+  },
+  {
+   "fieldname": "domain_name",
+   "fieldtype": "Data",
+   "label": "Domain Name"
+  },
+  {
+   "fieldname": "port_number",
+   "fieldtype": "Data",
+   "label": "Port Number"
+  },
+  {
+   "fieldname": "creation_date",
+   "fieldtype": "Date",
+   "label": "Creation Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "plan_details_section",
+   "fieldtype": "Section Break",
+   "label": "Plan Details"
+  },
+  {
+   "fieldname": "label",
+   "fieldtype": "Data",
+   "label": "Label",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "public_ip",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Public IP",
+   "read_only": 1
+  },
+  {
+   "fieldname": "private_ip",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Private IP",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_15",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "plan",
+   "fieldtype": "Link",
+   "label": "Plan",
+   "options": "Subscription Plan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Int",
+   "label": "Quantity",
+   "reqd": 1
+  },
+  {
+   "fieldname": "billing_details_section",
+   "fieldtype": "Section Break",
+   "label": "Billing details"
+  },
+  {
+   "depends_on": "plan",
+   "fetch_from": "plan.cost",
+   "fieldname": "price_per_intervel",
+   "fieldtype": "Data",
+   "label": "Price per intervel",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_21",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "day_until_due",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Day Until due"
+  },
+  {
+   "fieldname": "trail_period_start_date",
+   "fieldtype": "Date",
+   "label": "Trail Period Start Date",
+   "read_only": 1,
+   "set_only_once": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "need_one_month_trail",
+   "fieldtype": "Check",
+   "label": "Need one month trail",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "column_break_26",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trail_period_end_date",
+   "fieldtype": "Date",
+   "label": "Trail Period End Date",
+   "read_only": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "oci",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "OCI"
+  },
+  {
+   "fieldname": "trail_period_section",
+   "fieldtype": "Section Break",
+   "label": "Trail Period"
+  },
+  {
+   "depends_on": "plan",
+   "fetch_from": "plan.billing_interval",
+   "fieldname": "billing_intervell",
+   "fieldtype": "Data",
+   "label": "Billing_intervell",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stat",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Status"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-10-21 07:45:18.741908",
+ "modified_by": "Administrator",
+ "module": "Cloud",
+ "name": "Cloud",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "label",
+ "track_changes": 1
+}
