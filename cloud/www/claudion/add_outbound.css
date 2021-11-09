@@ -1,0 +1,25 @@
+
+th{
+    background-color:#c5caf8;
+}
+td{
+    background-color:#F0F0F0;
+}
+#div-space{
+    margin-bottom: -20px;
+    margin-top: 20px;
+}
+#create-btn{
+    width:  200px;
+}
+.table{
+    margin-top: 20px;
+}
+#details{
+    height: 30px;
+}
+.sub-btn{
+    margin-top: 10px;
+    width: 120px;
+    float: right;
+}

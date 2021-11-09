@@ -1,7 +1,10 @@
 import frappe
 from datetime import date,timedelta
+import oci
+import sys
 
 
+#function to create a subscription document when a instance is created
 def save_subscription(doc,event):
 
     ### adding the owner to the customer doctype if they are not in the customer doctype for permission ####
@@ -69,3 +72,153 @@ def save_subscription(doc,event):
         })
         note.insert()  #inserting in to the doctype
         frappe.db.commit()
+
+
+
+#function to poweron the instance
+@frappe.whitelist()    
+def instance_poweron(current_oci_id):
+        config = {
+            "user": "ocid1.user.oc1..aaaaaaaaaiij2osjymqtlzx4s3fgxccf55leybpule5blsa6nqayscqpnqhq",
+            "key_file": "/opt/bench/frappe-bench/apps/cloud/cloud/cloud/doctype/cloud/oci_api_key.pem",
+            "fingerprint": "be:fd:ac:fd:e5:9f:68:e0:bd:83:dc:ab:a8:a0:38:81",
+            "tenancy": "ocid1.tenancy.oc1..aaaaaaaanvukpti3fx452gsvczw64d6dm2unoe6hgn6h5jkcainzmuej2tbq",
+            "region": "me-jeddah-1",
+        }  
+        try:
+            core_client = oci.core.ComputeClient(config)
+            # core_client.base_client.set_region('eu-frankfurt-1')
+            id=current_oci_id
+            # Send the request to service
+            instance_action_response = core_client.instance_action(instance_id=id,action='START')
+            return {"doNe"}
+        except Exception as e:
+            frappe.errprint(e.with_traceback())
+            return {"error": True, "msg":e.with_traceback()}
+
+
+#function for poweroff of the instance
+@frappe.whitelist()    
+def instance_poweroff(current_oci_id):
+        config = {
+            "user": "ocid1.user.oc1..aaaaaaaaaiij2osjymqtlzx4s3fgxccf55leybpule5blsa6nqayscqpnqhq",
+            "key_file": "/opt/bench/frappe-bench/apps/cloud/cloud/cloud/doctype/cloud/oci_api_key.pem",
+            "fingerprint": "be:fd:ac:fd:e5:9f:68:e0:bd:83:dc:ab:a8:a0:38:81",
+            "tenancy": "ocid1.tenancy.oc1..aaaaaaaanvukpti3fx452gsvczw64d6dm2unoe6hgn6h5jkcainzmuej2tbq",
+            "region": "me-jeddah-1",
+        }  
+        try:
+            core_client = oci.core.ComputeClient(config)
+            # core_client.base_client.set_region('eu-frankfurt-1')
+            id=current_oci_id
+            # Send the request to service
+            instance_action_response = core_client.instance_action(instance_id=id,action='SOFTSTOP')
+            return {"doNe"}
+        except Exception as e:
+            frappe.errprint(e.with_traceback())
+            return {"error": True, "msg":e.with_traceback()}
+
+
+
+#function to reboot the instance
+@frappe.whitelist()    
+def instance_reboot(current_oci_id):
+        config = {
+            "user": "ocid1.user.oc1..aaaaaaaaaiij2osjymqtlzx4s3fgxccf55leybpule5blsa6nqayscqpnqhq",
+            "key_file": "/opt/bench/frappe-bench/apps/cloud/cloud/cloud/doctype/cloud/oci_api_key.pem",
+            "fingerprint": "be:fd:ac:fd:e5:9f:68:e0:bd:83:dc:ab:a8:a0:38:81",
+            "tenancy": "ocid1.tenancy.oc1..aaaaaaaanvukpti3fx452gsvczw64d6dm2unoe6hgn6h5jkcainzmuej2tbq",
+            "region": "me-jeddah-1",
+        }  
+        try:
+            core_client = oci.core.ComputeClient(config)
+            # core_client.base_client.set_region('eu-frankfurt-1')
+            id=current_oci_id
+            # Send the request to service
+            instance_action_response = core_client.instance_action(instance_id=id,action='SOFTRESET')
+            return {"doNe"}
+        except Exception as e:
+            frappe.errprint(e.with_traceback())
+            return {"error": True, "msg":e.with_traceback()}
+
+
+
+#function to fetch the status of the instance
+@frappe.whitelist() 
+def intnc_stat(current_oci_id=None):   
+        config = {
+            "user": "ocid1.user.oc1..aaaaaaaaaiij2osjymqtlzx4s3fgxccf55leybpule5blsa6nqayscqpnqhq",
+            "key_file": "/opt/bench/frappe-bench/apps/cloud/cloud/cloud/doctype/cloud/oci_api_key.pem",
+            "fingerprint": "be:fd:ac:fd:e5:9f:68:e0:bd:83:dc:ab:a8:a0:38:81",
+            "tenancy": "ocid1.tenancy.oc1..aaaaaaaanvukpti3fx452gsvczw64d6dm2unoe6hgn6h5jkcainzmuej2tbq",
+            "region": "me-jeddah-1",
+        }
+        try:
+            data=[]
+            compute = oci.core.ComputeClient(config)
+            compartment_id="ocid1.tenancy.oc1..aaaaaaaanvukpti3fx452gsvczw64d6dm2unoe6hgn6h5jkcainzmuej2tbq"
+            instances=compute.list_instances(compartment_id).data
+            for instance in instances:
+                if (instance.id==current_oci_id):
+                    json={instance.lifecycle_state}
+                    return json
+        except Exception as e:
+            frappe.errprint(e.with_traceback())
+            return {"error": True, "msg":e.with_traceback()}
+
+
+
+#function to fetch the public_ip of the instance
+@frappe.whitelist() 
+def get_public_ip(current_oci_id=None): 
+        config = {
+            "user": "ocid1.user.oc1..aaaaaaaaaiij2osjymqtlzx4s3fgxccf55leybpule5blsa6nqayscqpnqhq",
+            "key_file": "/opt/bench/frappe-bench/apps/cloud/cloud/cloud/doctype/cloud/oci_api_key.pem",
+            "fingerprint": "be:fd:ac:fd:e5:9f:68:e0:bd:83:dc:ab:a8:a0:38:81",
+            "tenancy": "ocid1.tenancy.oc1..aaaaaaaanvukpti3fx452gsvczw64d6dm2unoe6hgn6h5jkcainzmuej2tbq",
+            "region": "me-jeddah-1",
+        }
+        try:
+            compute_client = oci.core.ComputeClient(config)
+            network_client = oci.core.VirtualNetworkClient(config)
+            get_pub=oci.core.models.PublicIp()
+            cd_compartment_id = config["tenancy"]
+            instanceId = current_oci_id 
+            vnic_id = compute_client.list_vnic_attachments(cd_compartment_id, instance_id=instanceId).data[0]
+            private_ip = network_client.get_vnic(vnic_id.vnic_id).data
+            json={private_ip.public_ip}
+            return json
+        except Exception as e:
+            frappe.errprint(e.with_traceback())
+            return {"error": True, "msg":e.with_traceback()}
+
+
+
+
+#function to fetch the private_ip of the instance
+@frappe.whitelist() 
+def get_private_ip(current_oci_id=None):  
+        config = {
+            "user": "ocid1.user.oc1..aaaaaaaaaiij2osjymqtlzx4s3fgxccf55leybpule5blsa6nqayscqpnqhq",
+            "key_file": "/opt/bench/frappe-bench/apps/cloud/cloud/cloud/doctype/cloud/oci_api_key.pem",
+            "fingerprint": "be:fd:ac:fd:e5:9f:68:e0:bd:83:dc:ab:a8:a0:38:81",
+            "tenancy": "ocid1.tenancy.oc1..aaaaaaaanvukpti3fx452gsvczw64d6dm2unoe6hgn6h5jkcainzmuej2tbq",
+            "region": "me-jeddah-1",
+        }
+        try:
+            compute_client = oci.core.ComputeClient(config)
+            network_client = oci.core.VirtualNetworkClient(config)
+            get_pub=oci.core.models.PublicIp()
+            cd_compartment_id = config["tenancy"]
+            instanceId = current_oci_id 
+            vnic_id = compute_client.list_vnic_attachments(cd_compartment_id, instance_id=instanceId).data[0]
+            private_ip = network_client.get_vnic(vnic_id.vnic_id).data
+            json={private_ip.private_ip}
+            return json
+        except Exception as e:
+            frappe.errprint(e.with_traceback())
+            return {"error": True, "msg":e.with_traceback()}
+
+
+
+

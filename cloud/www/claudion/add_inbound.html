@@ -1,0 +1,73 @@
+<!-- linking with the main css -->
+<link rel="stylesheet" href="/assets/cloud/css/style.css">
+
+
+<div class="wrapper">
+    <!-- Sidebar start -->
+    <nav id="sidebar" class="sidebar-main">
+        <ul class="list-unstyled components">
+            <li>
+                <a href="/index">Instance</a>
+            </li>
+            <li>
+                <a href="/claudion/firewall">Firewalls</a>
+            </li>
+            
+        </ul>
+    </nav>
+    <!-- Sidebar ends -->
+
+    <div id="content">
+        <!-- Form beginning -->
+        <h4>Add Inbound Rule</h4>
+        <form id="formm" class="p-3" onsubmit="return validateform(this)">
+            <div class="form-group">
+                <label for="source">Source</label>
+                <input type="text" name="source" class="form-control" id="source" placeholder="">
+            </div>
+
+            <div class="form-group">
+                <label for="seeAnotherField">Protocol</label>
+                <select class="form-control" name="protocol" id="seeAnotherField">
+                    <option value="no">TCP</option>
+                    <option value="no">UDP</option>
+                    <option value="yes">ICMP</option>
+                    <option value="yes">ICMPV4</option>
+                    <option value="noo">All</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="otherFieldDiv">
+                <label for="otherField">Type</label>
+                <input type="text" class="form-control" name="type" id="type" placeholder="">
+
+                <div class="form-group" id="otherFieldDiv">
+                    <label for="otherField">Code</label>
+                    <input type="text" class="form-control" name="code" id="code" placeholder="">
+                </div>
+            </div>
+
+            <div class="form-group" id="otherFieldDiv1">
+                <label for="otherField">Source Port Range</label>
+                <input type="text" class="form-control" name="s-p" id="s-port" placeholder="">
+
+                <div class="form-group" id="otherFieldDiv1">
+                    <label for="otherField">Destination Port Range</label>
+                    <input type="text" class="form-control" name="d-p" id="d-port" placeholder="">
+                </div>
+            </div>
+
+
+
+            <div class="form-group id=">
+                <label for="textarea">Description</label>
+                <textarea class="form-control" name="descc" id="description" rows="3"></textarea><button id="button"
+                    type="button" value="send" class="btn btn-primary sub-btn">Submit</button>
+            </div>
+        </form>
+
+    </div>
+    <!-- Form ends -->
+</div>
+
+</div>

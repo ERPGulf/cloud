@@ -1,0 +1,94 @@
+<!-- linking with the main css -->
+<link rel="stylesheet" href="/assets/cloud/css/style.css">
+
+
+<div class="wrapper">
+    <!-- Sidebar starts -->
+    <nav id="sidebar" class="sidebar-main">
+        <ul class="list-unstyled components">
+            <li>
+                <a href="/index">Instance</a>
+            </li>
+            <li>
+                <a href="/claudion/firewall">Firewalls</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Sidebar ends -->
+
+    <div id="content">
+        <div class="d-flex justify-content-between " id="div-space">
+            <h2>Inbound Rules</h2>
+            <a href="/claudion/add_inbound"><button class="btn btn-primary active " id="create-btn">Add Inbound
+                    Rule</button></a>
+        </div>
+        <div>
+            <!-- Table content starts -->
+            <table class="table" id="mytable">
+
+                <tr>
+                    <th>Source</th>
+                    <th>Protocol</th>
+                    <th>Max Port Range</th>
+                    <th>Min Port Range</th>
+                    <th>Description</th>
+
+                    <th>Action</th>
+                </tr>
+
+
+                {%for data in datas%}
+
+                <tr>
+                    <td>{{data.source}}</td>
+                    <td>{{data.protocol}}</td>
+                    <td>{{data.port_max}}</td>
+                    <td>{{data.port_min}}</td>
+                    <td>{{data.description}}</td>
+                    <td><a class="btn btn-primary btn-sm" id="button1">Delete</a></td>
+
+
+                </tr>
+
+                {%endfor%}
+            </table>
+        </div>
+
+        <hr id="table-line">
+        <div class="d-flex justify-content-between " id="div-space">
+
+            <h2>Outbound Rules</h2>
+            <a id="set" href="/claudion/add_outbound"><button class="btn btn-primary active " id="create-btn">Add Outbound
+                    Rule</button></a>
+        </div>
+
+        <table class="table" id="mytable1">
+            <tr>
+                <th>Destination</th>
+
+                <th>Protocol</th>
+                <th>Max Port Range</th>
+                <th>Min Port Range</th>
+                <th>Description</th>
+                <th>Action</th>
+
+            </tr>
+
+            {%for datam in datax%}
+            <tr>
+                <td>{{datam.destination}}</td>
+                <td>{{datam.protocol}}</td>
+                <td>{{datam.port_max}}</td>
+                <td>{{datam.port_min}}</td>
+                <td>{{datam.description}}</td>
+
+                <td><a class="btn btn-primary btn-sm">Delete</a></td>
+
+            </tr>
+            {%endfor%}
+        </table>
+        <!-- Table content ends -->
+    </div>
+
+</div>
+</div>

@@ -49,7 +49,9 @@ app_license = "MIT"
 
 # Generators
 # ----------
-
+website_route_rules=[
+	{"from_route":"/claudion/details_page/<name>","to_route":"claudion/details_page"}
+]
 # automatically create page for each record of this doctype
 # website_generators = ["Web Page"]
 
