@@ -18,7 +18,6 @@
   "creation_date",
   "plan_details_section",
   "label",
-  "column_break_15",
   "plan",
   "quantity",
   "billing_details_section",
@@ -92,10 +91,6 @@
    "label": "Label",
    "reqd": 1,
    "unique": 1
-  },
-  {
-   "fieldname": "column_break_15",
-   "fieldtype": "Column Break"
   },
   {
    "fieldname": "plan",
@@ -182,7 +177,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-10 08:55:09.252565",
+ "modified": "2021-11-10 09:02:44.841160",
  "modified_by": "Administrator",
  "module": "Cloud",
  "name": "Cloud",
