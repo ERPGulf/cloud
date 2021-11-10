@@ -60,13 +60,6 @@ frappe.ready(function() {
             <li>
                 <a href="/claudion/firewall">Firewall</a>
             </li>
-            
-            <li>
-                <a href="#">Portfolio</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
         </ul>
 
         
@@ -91,7 +84,7 @@ frappe.ready(function() {
 
 		// function call to fetch username from db
 		frappe.call({
-			method: "linode.utils.get_username",
+			method: "cloud.utils.get_username",
 			args: {                               
 				uid: frappe.session.user
 			},
@@ -108,7 +101,7 @@ frappe.ready(function() {
 				frappe.web_form.set_value(data,value);
 				// fuction call to get the billin_intervell based on the plan
 				frappe.call({
-					method: "linode.utils.get_billing_intervell",
+					method: "cloud.utils.get_billing_intervell",
 					args: {
 						value: value ,
 					},
@@ -121,7 +114,7 @@ frappe.ready(function() {
 				// function to get the price per month in webform after selecting the paln
 				frappe.call({
 
-					method: "linode.utils.price_per_month",
+					method: "cloud.utils.price_per_month",
 					args: {
 						value: value ,
 					},

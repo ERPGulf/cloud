@@ -73,7 +73,29 @@ def save_subscription(doc,event):
         note.insert()  #inserting in to the doctype
         frappe.db.commit()
 
+# function to get the billing_intervell for the plan that give in the form
+@frappe.whitelist(allow_guest=True)
+def get_billing_intervell(value=None):
+    plan = frappe.db.sql(f""" SELECT billing_interval FROM `tabSubscription Plan` WHERE plan_name ='{value}';""")
+    return plan[0]
 
+
+@frappe.whitelist(allow_guest=True)
+def price_per_month(value=None):
+    plan = frappe.db.sql(f""" SELECT cost FROM `tabSubscription Plan` WHERE plan_name ='{value}';""")
+    return plan[0]
+
+#fuction to get the username from db for the server booking form
+@frappe.whitelist(allow_guest=True)
+def get_username(uid):
+    r = frappe.db.sql(f""" SELECT username FROM `tabUser` WHERE name ='{uid}';""")
+    return r
+
+# function to get the host_name from db 
+@frappe.whitelist(allow_guest=True)
+def get_host_name(uid):
+    r = frappe.db.sql(f""" SELECT full_name FROM `tabUser` WHERE name ='{uid}';""")
+    return r
 
 #function to poweron the instance
 @frappe.whitelist()    

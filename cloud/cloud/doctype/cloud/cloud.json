@@ -18,9 +18,6 @@
   "creation_date",
   "plan_details_section",
   "label",
-  "stat",
-  "public_ip",
-  "private_ip",
   "column_break_15",
   "plan",
   "quantity",
@@ -91,23 +88,10 @@
   {
    "fieldname": "label",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Label",
    "reqd": 1,
    "unique": 1
-  },
-  {
-   "fieldname": "public_ip",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Public IP",
-   "read_only": 1
-  },
-  {
-   "fieldname": "private_ip",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Private IP",
-   "read_only": 1
   },
   {
    "fieldname": "column_break_15",
@@ -116,6 +100,7 @@
   {
    "fieldname": "plan",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Plan",
    "options": "Subscription Plan",
    "reqd": 1
@@ -123,6 +108,7 @@
   {
    "fieldname": "quantity",
    "fieldtype": "Int",
+   "in_list_view": 1,
    "label": "Quantity",
    "reqd": 1
   },
@@ -192,17 +178,11 @@
    "fieldtype": "Data",
    "label": "Billing_intervell",
    "read_only": 1
-  },
-  {
-   "fieldname": "stat",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Status"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-21 07:45:18.741908",
+ "modified": "2021-11-10 08:55:09.252565",
  "modified_by": "Administrator",
  "module": "Cloud",
  "name": "Cloud",
