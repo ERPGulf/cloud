@@ -6,6 +6,7 @@ app_publisher = "cloud"
 app_description = "cloud"
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
+app_version = "v0.0.2"
 app_email = "deepak@htsqatar"
 app_license = "MIT"
 

@@ -8,7 +8,7 @@ from cloud import __version__ as version
 
 setup(
 	name="cloud",
-	version= v0.0.2,
+	version=v0.0.2,
 	description="cloud",
 	author="cloud",
 	author_email="deepak@htsqatar",
