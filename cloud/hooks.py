@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+from frappe import _
 from . import __version__ as app_version
 
 app_name = "cloud"
@@ -6,7 +8,6 @@ app_publisher = "cloud"
 app_description = "cloud"
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
-app_version = "v0.0.2"
 app_email = "deepak@htsqatar"
 app_license = "MIT"
 
