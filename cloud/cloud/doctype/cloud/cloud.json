@@ -59,9 +59,10 @@
   },
   {
    "fieldname": "region",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "Region",
-   "options": "Saudi\nQatar\nOman\nIndia\nAmerica\nChina"
+   "options": "Region",
+   "reqd": 1
   },
   {
    "fieldname": "domain_name",
@@ -177,7 +178,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-10 09:02:44.841160",
+ "modified": "2021-11-10 14:21:51.517336",
  "modified_by": "Administrator",
  "module": "Cloud",
  "name": "Cloud",

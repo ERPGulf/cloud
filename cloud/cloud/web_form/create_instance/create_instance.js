@@ -25,7 +25,7 @@ frappe.ready(function() {
 	//creating another div of class summery for the instance summery
 	var studentDiv = document.querySelector('div.page_content');
 	studentDiv.insertAdjacentHTML('afterend',`<div class="summery col-xs-3">
-	<h3>Instance Details</h3>
+	<h3>Cloud Server Details</h3>
 	<p class="label"></p>
 	
 	<p class="plan"></p>
@@ -55,7 +55,7 @@ frappe.ready(function() {
         <ul class="list-unstyled components">
             
             <li>
-                <a href="/index">Instance</a>
+                <a href="/claudion/index">Cloud Server</a>
             </li>
             <li>
                 <a href="/claudion/firewall">Firewall</a>
@@ -141,9 +141,9 @@ frappe.ready(function() {
 
 	// function to navigate the webform after the submiting the form
 	frappe.web_form.after_save = () => {
-		window.location.href = "/index";
+		window.location.href = "/claudion/index";
 	  }
 	
 })
 
-document.querySelector('.form-section:nth-child(3)').innerHTML='<p>test</p>'
+

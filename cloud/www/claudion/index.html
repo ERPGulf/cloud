@@ -9,7 +9,7 @@
         <ul class="list-unstyled components">
 
             <li>
-                <a href="/index">Instance</a>
+                <a href="/claudion/index">Cloud Server</a>
             </li>
             <li>
                 <a href="/claudion/firewall">Firewalls</a>
@@ -27,8 +27,8 @@
 
 
         <div class="d-flex justify-content-between " id="div-space">
-            <h2>Instance</h2>
-            <a href="/create-instance"><button class="btn btn-primary" id="create-btn">Create Linode</button></a>
+            <h2>Cloud Server</h2>
+            <a href="/create-instance"><button class="btn btn-primary" id="create-btn">Create Cloud Server</button></a>
         </div>
         <div>
             <table class="table " id="myTable">
@@ -56,7 +56,7 @@
                     <td>{{data.creation_date}}</td>
                     <td>{{data.region}}</td>
                     <td>{{data.price_per_intervel}}</td>
-                    <td><a href="claudion/details_page/{{data.name}}" class="btn btn-primary btn-sm">Details</a>
+                    <td><a href="/claudion/details_page/{{data.name}}" class="btn btn-primary btn-sm">Details</a>
                         <a onclick="CustomConfirm.show('This will PowerOFF {{data.label}} instance',ins_poweroff)"
                             id="inst_btn">PowerOFF</a>
                         <a onclick="CustomConfirm.show('This will PowerON {{data.label}} instance',ins_poweron)"
@@ -67,23 +67,21 @@
                     <td id="oci_id">{{data.oci}}</td>
                 </tr>
                 <!-- table_body end -->
+                <div id=freezeLayer class="freeze-layer" style="display: none;"></div>
+        <div id="dialogCont" class="dlg-container">
+            <div class="dlg-header">Message</div>
+            <div class="dlg-body" id="dlgBody"></div>
+            <div class="dlg-footer">
+                <a onclick="CustomConfirm.okey();" href="/claudion/details_page/{{data.name}}">OK</a>
+                <a onclick="CustomConfirm.close();">Cancel</a>
+            </div>
+        </div>
                 {%endfor%}
             </table>
 
         </div>
         <!-- conformation alert secrtion start -->
-        {%for data in datas%}
-
-        <div id=freezeLayer class="freeze-layer" style="display: none;"></div>
-        <div id="dialogCont" class="dlg-container">
-            <div class="dlg-header">Message</div>
-            <div class="dlg-body" id="dlgBody"></div>
-            <div class="dlg-footer">
-                <a onclick="CustomConfirm.okey();" href="claudion/details_page/{{data.name}}">OK</a>
-                <a onclick="CustomConfirm.close();">Cancel</a>
-            </div>
-        </div>
-        {%endfor%}
+        
         <!-- conformation alert secrtion end -->
     </div>
     <!-- page content ennd -->

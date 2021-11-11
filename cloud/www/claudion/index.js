@@ -61,7 +61,7 @@ var CustomConfirm = new function () {
     };
     this.okey = function () {
         this.callback();
-        window.location = ""
+        
         this.close();
     }
     this.close = function () {

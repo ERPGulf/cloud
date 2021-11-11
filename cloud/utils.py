@@ -9,7 +9,7 @@ def save_subscription(doc,event):
 
     ### adding the owner to the customer doctype if they are not in the customer doctype for permission ####
 
-    owner=doc.owner                        #fetching the owner that is now creating a linode
+    owner=doc.owner                        #fetching the owner that is now creating a instance
 
     customer=frappe.db.sql(f"""select name from `tabCustomer`;""",as_dict=True) #fetching all the customer in the customer table in the system
     coustomer_list=[d['name'] for d in customer]   #converting that list of dictionary to  a single list

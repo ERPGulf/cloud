@@ -1,6 +1,3 @@
-
-
-
 import frappe
 import oci
 from frappe.model.document import Document

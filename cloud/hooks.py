@@ -100,7 +100,7 @@ doc_events = {
 	# 	"on_trash": "method"
 	# }
 	"Cloud": {
-		"after_insert": "linode.utils.save_subscription",
+		"after_insert": "cloud.utils.save_subscription",
 		
 	},
 	

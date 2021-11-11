@@ -37,7 +37,7 @@ h3{
     color: rgb(79, 125, 211);
     font-weight: bold;
     text-align: center;
-    font-size: 27px;
+    font-size: 22px;
     margin-top: 30px;
 
 }
@@ -90,8 +90,9 @@ h3{
 .summery{
     
     position: sticky;
-    height: 560px;
+    height: 600px;
     top: 10px;
+
 }
 .web-form-wrapper{
     margin-right: -20px;
