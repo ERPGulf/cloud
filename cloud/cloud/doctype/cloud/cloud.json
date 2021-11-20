@@ -11,26 +11,28 @@
   "host_name",
   "username",
   "password",
+  "email",
   "column_break_5",
   "region",
   "domain_name",
   "port_number",
-  "creation_date",
   "plan_details_section",
   "label",
   "plan",
+  "column_break_14",
   "quantity",
   "billing_details_section",
   "billing_intervell",
   "price_per_intervel",
   "column_break_21",
   "day_until_due",
+  "oci",
+  "subnet_id",
   "trail_period_section",
   "trail_period_start_date",
   "need_one_month_trail",
   "column_break_26",
-  "trail_period_end_date",
-  "oci"
+  "trail_period_end_date"
  ],
  "fields": [
   {
@@ -73,12 +75,6 @@
    "fieldname": "port_number",
    "fieldtype": "Data",
    "label": "Port Number"
-  },
-  {
-   "fieldname": "creation_date",
-   "fieldtype": "Date",
-   "label": "Creation Date",
-   "read_only": 1
   },
   {
    "fieldname": "plan_details_section",
@@ -159,8 +155,7 @@
   {
    "fieldname": "oci",
    "fieldtype": "Data",
-   "hidden": 1,
-   "label": "OCI"
+   "label": "OCI ID"
   },
   {
    "fieldname": "trail_period_section",
@@ -174,11 +169,25 @@
    "fieldtype": "Data",
    "label": "Billing_intervell",
    "read_only": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "column_break_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "subnet_id",
+   "fieldtype": "Data",
+   "label": "Subnet ID"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-10 14:21:51.517336",
+ "modified": "2021-11-18 08:03:13.710905",
  "modified_by": "Administrator",
  "module": "Cloud",
  "name": "Cloud",

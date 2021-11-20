@@ -19,7 +19,7 @@
  "is_standard": 1,
  "login_required": 0,
  "max_attachment_size": 0,
- "modified": "2021-11-11 08:52:43.486536",
+ "modified": "2021-11-16 07:45:03.622938",
  "modified_by": "Administrator",
  "module": "Cloud",
  "name": "create-instance",
@@ -161,6 +161,18 @@
   },
   {
    "allow_read_on_all_link_options": 0,
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Email",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
    "fieldname": "",
    "fieldtype": "Column Break",
    "hidden": 0,
@@ -226,7 +238,7 @@
    "label": "Billing intervell",
    "max_length": 0,
    "max_value": 0,
-   "read_only": 1,
+   "read_only": 0,
    "reqd": 0,
    "show_in_filter": 0
   }

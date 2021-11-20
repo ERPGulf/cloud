@@ -51,7 +51,7 @@ frappe.ready(function() {
 	<div class="wrapper">    
 	<!-- Sidebar start -->
     <nav id="sidebar" class="sidebar-main">
-
+	
         <ul class="list-unstyled components">
             
             <li>
@@ -79,9 +79,9 @@ frappe.ready(function() {
 	
 	
 	
-	// to get the username and host name when we load the form
+	// to get the username 
 	frappe.web_form.after_load = () => {
-
+		frappe.web_form.set_value('email',frappe.session.user);
 		// function call to fetch username from db
 		frappe.call({
 			method: "cloud.utils.get_username",
@@ -137,6 +137,8 @@ frappe.ready(function() {
 			}
 
 		})
+		var regiondiv = document.querySelector('.form-section:nth-child(1)');
+		// regiondiv.innerHTML=
 	}
 
 	// function to navigate the webform after the submiting the form
@@ -146,4 +148,60 @@ frappe.ready(function() {
 	
 })
 
+// function to delay the execution of the vcn creation call
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+window.onload = function () {
+	//frappe call to check is any compartment is created by the user
+    frappe.call({
+        method: "cloud.utils.get_name",
+        args: {
+            user_id: frappe.session.user
+        },
+        callback: function (b) {
+            cmp_name = String(Object.values(b))
+            if (cmp_name == 0) {
+                //frappe call to create a compartment if no compartment is created by the user
+                frappe.call({
+                    method: "cloud.utils.create_compartment",
+                    args: {
+                        user_name: "test-deepak28",
+                    },
+                    callback: function (a) {
+                        s = Object.values(a)
+                        cmp_id = s[0]
+                        sleep(6000).then(() => { //to set 6 second delay after creating a compartment
+                            //frappe call to create vcn using the compartment id
+                            frappe.call({
+                                method: "cloud.utils.create_vcn",
+                                args: {
+                                    current_cmp_id: cmp_id
+                                },
+                                callback: function (b) {
+                                    //frappe call to create a document to store the vcn_id and compartment_id in comp_id doctype
+                                    frappe.call({
+                                        method: "cloud.utils.save_cmp",
+                                        args: {
+                                            ai: String(Object.values(a)),
+                                            bi: String(Object.values(b)),
+                                            user: frappe.session.user,
+                                        },
+                                        callback: function (c) {
+                                        }
+
+                                    })
+                                }
+                            })
+                        })
+
+
+                    }
+                })
+            }
+        }
+    })
+
+}
 

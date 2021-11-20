@@ -4,6 +4,7 @@ import frappe
 def get_context(context):
 	datas = frappe.db.sql(f""" SELECT * FROM `tabCloud`;""",as_dict=True)
 	context = {
-		"datas":datas
+		"datas":datas,
+		
 	}
 	return context

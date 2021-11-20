@@ -1,34 +1,40 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:region",
- "creation": "2021-11-10 14:15:33.017186",
+ "autoname": "field:user",
+ "creation": "2021-11-15 13:02:56.212931",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "region",
-  "image"
+  "combartment_id",
+  "vcn_id",
+  "user"
  ],
  "fields": [
   {
-   "fieldname": "region",
+   "fieldname": "combartment_id",
    "fieldtype": "Data",
-   "label": "Region",
-   "unique": 1
+   "label": "Combartment id"
   },
   {
-   "fieldname": "image",
-   "fieldtype": "Attach Image",
-   "label": "image"
+   "fieldname": "vcn_id",
+   "fieldtype": "Data",
+   "label": "VCN id"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Data",
+   "label": "User",
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-19 13:06:48.281047",
+ "modified": "2021-11-15 14:17:59.919928",
  "modified_by": "Administrator",
  "module": "Cloud",
- "name": "Region",
+ "name": "comp_id",
  "owner": "Administrator",
  "permissions": [
   {

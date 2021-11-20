@@ -4,6 +4,7 @@ import oci
 import sys
 
 
+
 #function to create a subscription document when a instance is created
 def save_subscription(doc,event):
 
@@ -242,5 +243,85 @@ def get_private_ip(current_oci_id=None):
             return {"error": True, "msg":e.with_traceback()}
 
 
+# function to create compartment 
+@frappe.whitelist()     
+def create_compartment(user_name):  
+            # Create a default configuration file 
+        config = {
+            "user": "ocid1.user.oc1..aaaaaaaaaiij2osjymqtlzx4s3fgxccf55leybpule5blsa6nqayscqpnqhq",
+            "key_file": "/opt/bench/frappe-bench/apps/cloud/cloud/cloud/doctype/cloud/oci_api_key.pem",
+            "fingerprint": "be:fd:ac:fd:e5:9f:68:e0:bd:83:dc:ab:a8:a0:38:81",
+            "tenancy": "ocid1.tenancy.oc1..aaaaaaaanvukpti3fx452gsvczw64d6dm2unoe6hgn6h5jkcainzmuej2tbq",
+            "region": "me-jeddah-1",
+        } 
+
+        try:
+            # Initialize service client with default config file
+            identity_client = oci.identity.IdentityClient(config)
+            # Send the request to service with parameters
+            create_compartment_response = identity_client.create_compartment(
+                create_compartment_details=oci.identity.models.CreateCompartmentDetails(
+                    compartment_id="ocid1.tenancy.oc1..aaaaaaaanvukpti3fx452gsvczw64d6dm2unoe6hgn6h5jkcainzmuej2tbq",
+                    name=user_name,
+                    description="test compartment"))
+
+            # Get the data from response
+            det=create_compartment_response.data
+            return det.id
+        except Exception as e:
+            frappe.errprint(e.with_traceback())
+            
+            return {"error": True, "msg":e.with_traceback()  }
 
 
+#function to create vcn
+@frappe.whitelist()  
+def create_vcn(current_cmp_id):
+            # Create a default configuration file 
+        config = {
+            "user": "ocid1.user.oc1..aaaaaaaaaiij2osjymqtlzx4s3fgxccf55leybpule5blsa6nqayscqpnqhq",
+            "key_file": "/opt/bench/frappe-bench/apps/cloud/cloud/cloud/doctype/cloud/oci_api_key.pem",
+            "fingerprint": "be:fd:ac:fd:e5:9f:68:e0:bd:83:dc:ab:a8:a0:38:81",
+            "tenancy": "ocid1.tenancy.oc1..aaaaaaaanvukpti3fx452gsvczw64d6dm2unoe6hgn6h5jkcainzmuej2tbq",
+            "region": "me-jeddah-1",
+        } 
+
+        try:
+            # Initialize service client with default config file
+            core_client = oci.core.VirtualNetworkClient(config)
+            # Send the request to service with parameters
+            create_vcn_response = core_client.create_vcn(
+                create_vcn_details=oci.core.models.CreateVcnDetails(
+                    compartment_id=current_cmp_id,
+                    cidr_blocks=["10.0.0.0/16"]
+                    ))
+            # Get the data from response
+            det=create_vcn_response.data.id
+            return det
+        except Exception as e:
+            frappe.errprint(e.with_traceback())
+            
+            return {"error": True, "msg":e.with_traceback()
+             }
+
+
+# fuction to save the compartment and vcn_id inside a doctype named comp_id
+@frappe.whitelist() 
+def save_cmp(ai,bi,user):
+    comp_id=frappe.get_doc({
+        "doctype":"comp_id",
+        "combartment_id":ai,
+        "vcn_id":bi,
+        "user":user
+    })
+    comp_id.insert()
+    frappe.db.commit()
+
+
+#function to check if any compartment is created to the user
+@frappe.whitelist()
+def get_name(user_id):
+    if frappe.db.exists("comp_id",user_id):
+        return 1
+    else:
+        return 0

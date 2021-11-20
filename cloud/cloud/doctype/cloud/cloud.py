@@ -37,6 +37,40 @@ def instnc_create(name):
             return {"error": True, "msg":e.with_traceback() }
 
 
+#function to create subnet
+@frappe.whitelist(allow_guest=True)    
+def create_subnet(comp,vcn,s_name):  
+            # Create a default configuration file
+        config = {
+            "user": "ocid1.user.oc1..aaaaaaaaaiij2osjymqtlzx4s3fgxccf55leybpule5blsa6nqayscqpnqhq",
+            "key_file": "/opt/bench/frappe-bench/apps/cloud/cloud/cloud/doctype/cloud/oci_api_key.pem",
+            "fingerprint": "be:fd:ac:fd:e5:9f:68:e0:bd:83:dc:ab:a8:a0:38:81",
+            "tenancy": "ocid1.tenancy.oc1..aaaaaaaanvukpti3fx452gsvczw64d6dm2unoe6hgn6h5jkcainzmuej2tbq",
+            "region": "me-jeddah-1",
+        }
+        try:
+            core_client = oci.core.VirtualNetworkClient(config)
+            value = frappe.db.get_value('cidrr','cidrr', 'block')
+            value=int(value)+1
+            x=frappe.client.set_value('cidrr','cidrr', 'block',value)
+            y=x.block
+            create_subnet_response = core_client.create_subnet(
+            create_subnet_details=oci.core.models.CreateSubnetDetails(
+                cidr_block="10.0.{}.0/24".format(y),
+                compartment_id=comp,
+                vcn_id=vcn,
+                display_name=s_name,
+                prohibit_internet_ingress=False,
+                prohibit_public_ip_on_vnic=False
+                ))
+            det =create_subnet_response.data.id
+            return det
+        except Exception as e:
+            frappe.errprint(e.with_traceback())
+            return {"error": True, "msg":e.with_traceback() }
+
+
+
 class Cloud(Document):
     # setting day until due for the subscription list billing intervell fetch from the plann doctype
     def before_insert(self):
@@ -56,9 +90,27 @@ class Cloud(Document):
             self.trail_period_start_date=start_date
             self.trail_period_end_date=end_date
 
-        # setting the instance created date
-        self.creation_date=datetime.today()
+       
+
+        
+
+        current_user=frappe.session.user #code to find the current logined user
+        comp=frappe.db.get_value('comp_id', current_user, 'combartment_id') #fetching compartment_id from comp_id doctype
+        vcn=frappe.db.get_value('comp_id', current_user, 'vcn_id') #fetching vcn_id from comp_id doctype
+
+        #calling the fuction to create subnet inside the vcn that is created
+        subnet=create_subnet(comp,vcn,self.label)
+        self.subnet_id=subnet
 
         # calling the function to create the instance in cloud
         data=instnc_create(self.label)
         self.oci = data
+
+
+
+        
+        
+        
+
+       
+    
