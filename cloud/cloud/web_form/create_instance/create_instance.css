@@ -1,3 +1,5 @@
+
+
 .page-header-actions-block{
     display: none;
 }
@@ -14,10 +16,9 @@ hr{
 }
 .btn-primary{
     font-size: 18px;
-    /* 
-    margin-top: 50px; */
+    
     width:190px;
-    margin-right: 20px;
+    margin-right: 40px;
     
 }
 
@@ -46,6 +47,7 @@ h3{
     font-size: 27px;
     font-weight: bold;
     text-align: center;
+    margin-top: -20px;
     
 }
 
@@ -59,7 +61,7 @@ h3{
 .label{
     color:green;
     padding-top: 10px;
-    padding-left: 10px;
+    padding-left: 30px;
     font-weight: bolder;
     /* font-family: 'Libre Baskerville', serif; */
     font-family: 'Fjalla One', sans-serif;
@@ -79,7 +81,7 @@ h3{
 .plan{
     color:green;
 
-    padding-left: 10px;
+    padding-left: 30px;
     font-weight: bolder;
     /* font-family: 'Libre Baskerville', serif; */
     font-family: 'Fjalla One', sans-serif;
@@ -89,9 +91,16 @@ h3{
 }
 .summery{
     
-    position: sticky;
+    position: fixed;
+    margin-left: 76%;
     height: 600px;
     top: 10px;
+    
+    z-index: 1; /* Stay on top *//* Stay at the top */
+    left: 0;
+    top: 64px;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: all .3s;
 
 }
 .web-form-wrapper{
@@ -101,9 +110,8 @@ h3{
     
 }
 .form-group{
-    padding-left: 10px;
+    padding-left: 20px;
     padding-right: 10px;
-    padding-top: 10px;
 }
 .form-section:nth-child(1){
     background-color:#F0F0F0;
@@ -139,20 +147,102 @@ h3{
     
     
 }
+.form-section:nth-child(5){
+    background-color:#F0F0F0;
+    margin-top: 20px;
+    border-radius: 3px;
+    margin: 10px;
+    
+    
+}
  .section-head{
-    margin-left: 10px;
+    margin-left: 15px;
     font-size: 10px;
     
 } 
-.form-section-description{
+/* .form-section-description{
     margin-top: -15px;
-}
-.section-body .form-column{
-    margin-top: -10px;
-}
+} */
+/* .section-body .form-column{
+    margin-top: 10px;
+} */
 .web-footer{
     margin-top: -70px;
 }
 .control-input-wrapper{
     background-color: white;
+}
+.distri-img{
+    height: 100px;
+}
+.distri-card{
+    margin-left: 33px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 155px;
+    width: 125px;
+    cursor: pointer;
+}
+.distri-card-text{
+    margin-top: -10px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+.flag-icon{
+    height:60px;
+    
+
+}
+.region-card{
+    margin-left: 33px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 140px;
+    width: 125px;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 2px;
+}
+.reg-card-head{
+    padding-top: 15px;
+    font-weight: bold;
+    margin-left: 10px;
+    
+}
+.region-heading{
+    margin-left: 33px;
+    margin-top: 10px;
+    
+}
+.plan-card{
+    border-radius: 0px;
+    background-color: white;
+    margin-left: 33px;
+    margin-top: 10px;
+    height: 160px;
+    width: 163px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.plan-card-head{
+    color: green;
+    background-color: white;
+    font-weight:bold;
+    
+
+    
+}
+/* .plan-card-head:hover {
+    color:white ;
+    background: rgb(46, 131, 243);
+  } */
+.card:hover {
+    color:white ;
+    background: rgb(46, 131, 243);
+  }
+  
+.active{
+    color:white ;
+    background-color: rgb(46, 131, 243);
+
 }

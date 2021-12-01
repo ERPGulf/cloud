@@ -19,15 +19,18 @@
   "plan_details_section",
   "label",
   "plan",
+  "distributions",
+  "price_per_intervel",
   "column_break_14",
   "quantity",
-  "billing_details_section",
   "billing_intervell",
-  "price_per_intervel",
-  "column_break_21",
-  "day_until_due",
+  "billing_details_section",
   "oci",
   "subnet_id",
+  "column_break_21",
+  "compartment_id",
+  "vcn_id",
+  "day_until_due",
   "trail_period_section",
   "trail_period_start_date",
   "need_one_month_trail",
@@ -107,7 +110,7 @@
   {
    "fieldname": "billing_details_section",
    "fieldtype": "Section Break",
-   "label": "Billing details"
+   "label": "Cloud details"
   },
   {
    "depends_on": "plan",
@@ -183,11 +186,27 @@
    "fieldname": "subnet_id",
    "fieldtype": "Data",
    "label": "Subnet ID"
+  },
+  {
+   "fieldname": "distributions",
+   "fieldtype": "Link",
+   "label": "Distributions",
+   "options": "Distributions"
+  },
+  {
+   "fieldname": "compartment_id",
+   "fieldtype": "Data",
+   "label": "Compartment Id"
+  },
+  {
+   "fieldname": "vcn_id",
+   "fieldtype": "Data",
+   "label": "VCN id"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-18 08:03:13.710905",
+ "modified": "2021-11-30 08:48:34.099014",
  "modified_by": "Administrator",
  "module": "Cloud",
  "name": "Cloud",

@@ -1,4 +1,120 @@
 
+::-webkit-scrollbar {
+    display: none;
+  }
+  .mystyle{
+      display: none;
+  }
+
+  .web-footer{
+    display: none;
+  }
+.text-right{
+    display: none; 
+  }
+  .navbar-light{
+    height: 64px;
+  }
+
+  
+  
+  #sidebar {
+    background:#32363b;
+    position: sticky;
+    height: 600px;
+    top: 10px;    
+  }
+  .sidebar-main{
+    border-radius: 4px;
+  }
+  #sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+  }
+  #sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    padding-left: 30px;
+  }
+  
+#sidebar ul li a:hover {
+  color:black ;
+  background: white;
+}
+
+  .sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 180px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top *//* Stay at the top */
+    left: 0;
+    top: 64px;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: all .3s;
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color:white;
+    display: block;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Style page content */
+  .main {
+    margin-left: 180px; /* Same as the width of the sidebar */
+    padding: 0px;
+    /* max-width: calc(100% - 280px); */
+    background-color: #FFF;
+    transition: all .6s linear;
+    padding-top: 20px;
+    overflow: overlay;
+    padding-bottom: 1
+  }
+  .table-sec{
+  margin: 17px;
+  
+}
+
+/* index page */
+
+th{
+  background-color:#c5caf8;
+}
+td{
+  background-color:#F0F0F0;
+}
+
+#create-btn{
+  width:  200px; 
+}
+
+#details{
+  height: 30px;
+}
+#oci_id{
+  display: none;
+}
+
+
+#inst_btn{
+  color: blue;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+
+
+/* details page css start */
+
 .brd{
   border-radius: 2px;
 }
@@ -46,10 +162,6 @@ b{
 #oci_id{
     display: none;
 }
-#compartment_id{
-  display: none;
-}
-
 #public_ip{
     font-weight: lighter;
     color: green;
@@ -132,9 +244,12 @@ a#align-btn {
     background: rgba(0,0,0,0.1);
     z-index: 1;
   }
+  /* details page css end */
 
-.graph-sec{
-  margin: 40px;
-}
+
+
+  
+
+  
  
   

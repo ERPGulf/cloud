@@ -1,6 +1,10 @@
 const div = document.querySelector('.my-4');
 div.classList.remove('container');
 div.classList.remove('my-4');
+
+
+
+
 // Deals with visible content in form
 $("#seeAnotherField").change(function () {
 
@@ -34,7 +38,7 @@ $(document).ready(function () {
         var description = $('#description').val();
         var type = $('#type').val();
         var code = $('#code').val();
-        console.log(typeof (description))
+        
         // Calls to the function to add rule
         if (protocol == "TCP" || protocol == "UDP") {
             frappe.call({

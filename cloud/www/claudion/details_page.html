@@ -1,13 +1,10 @@
-<!-- linking with the main css -->
-<link rel="stylesheet" href="/assets/cloud/css/style.css">
+<link rel="stylesheet" href="/assets/cloud/css/main_style.css">
 
-<div class="wrapper full-page">
-    <!-- Sidebar  -->
+
+<div class="sidenav">
+
     <nav id="sidebar" class="sidebar-main">
-        <!-- <p class="header-logo">
-            <img src="/assets/cloud/img/61_insta_cover.jpeg" style="width: 34px;"><b class="logo-p">Claudion</b>
 
-        </p> -->
 
         <ul class="list-unstyled components">
 
@@ -17,22 +14,28 @@
             <li>
                 <a href="/claudion/firewall">Firewalls</a>
             </li>
-
             
+
         </ul>
-
-
     </nav>
-    <div id="content">
+</div>
+
+
+
+
+<div class="table-sec">
+
+    <div class="main">
 
         <h4>Cloud Server/{{cloud.label}}</h4>
 
         <div class="card">
-            <div class="card-header">
+            <div class="card-header" id="t-head">
                 <b id="status"></b>
                 <p id="oci_id">{{cloud.oci}}</p>
-                <a href=""  id="align-btn">Backup</a>
-                <a href="/claudion/firewall"  id="align-btn">Firewall</a>
+                <p id="compartment_id">{{cloud.compartment_id}}</p>
+                <a href="" id="align-btn">Backup</a>
+                <a href="/claudion/firewall" id="align-btn">Firewall</a>
                 <a onclick="CustomConfirm.show('This will  Reboot {{cloud.label}} instance',ins_reboot)" class="reboot"
                     id="align-btn">Reeboot</a>
                 <a onclick="CustomConfirm.show('This will PowerON {{cloud.label}} instance',ins_poweron)"
@@ -44,12 +47,13 @@
             </div>
 
 
-            <div class="card-body">
+            <div class="card-body" id="t-body">
                 <div class="row">
                     <div class="col-sm-4">
                         <h6>Summery</h6>
                         <p class="inner-card-data"><b>Label</b>&#160-&#160<b id="out-data">{{cloud.label}}</b> <br>
-                            <b>Plan</b>&#160-&#160<b id="out-data">{{cloud.plan}}</b> </p>
+                            <b>Plan</b>&#160-&#160<b id="out-data">{{cloud.plan}}</b>
+                        </p>
                     </div>
                     <div class="col-sm-4">
                         <h6>IP Addresses</h6>
@@ -59,7 +63,8 @@
                     <div class="col-sm-4">
                         <h6>Access</h6>
                         <p class="inner-card-data"><b>Domain</b>&#160-&#160<b id="out-data">{{cloud.domain_name}}</b>
-                            <br><b>Price</b>&#160-&#160<b id="out-data">{{cloud.price_per_intervel}}/mo</b></p>
+                            <br><b>Price</b>&#160-&#160<b id="out-data">{{cloud.price_per_intervel}}/mo</b>
+                        </p>
                         <a onclick="CustomConfirm.show('For the data safety and security reasons, please send email to support@claudion.com for delete the instance.',ins_delete)"
                             class="btn btn-danger in-delete">Delete Instance</a>
                     </div>
@@ -75,5 +80,30 @@
                 <a onclick="CustomConfirm.close();">Cancel</a>
             </div>
         </div>
+        <div class="graph-sec">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                        aria-controls="profile" aria-selected="false">Analytics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                        aria-controls="contact" aria-selected="false">Backups</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show " id="home" role="tabpanel" aria-labelledby="home-tab"></div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div id="myDiv" class="graph-div"> </div>
+                </div>
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">test</div>
+            </div>
+        </div>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
     </div>
+
 </div>

@@ -1,6 +1,11 @@
 const div = document.querySelector('.my-4');
 div.classList.remove('container');
 div.classList.remove('my-4');
+
+$(function(){
+    $("#includedContent").load("common.html"); 
+  });
+
 // Deals with viewingg fields in form
 $("#seeAnotherField").change(function () {
 

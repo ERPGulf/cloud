@@ -1,22 +1,27 @@
-<!-- linking with the main css -->
-<link rel="stylesheet" href="/assets/cloud/css/style.css">
+<link rel="stylesheet" href="/assets/cloud/css/main_style.css">
 
 
-<div class="wrapper">
-    <!-- Sidebar starts -->
+<div class="sidenav">
+
     <nav id="sidebar" class="sidebar-main">
+
+
         <ul class="list-unstyled components">
+
             <li>
                 <a href="/claudion/index">Cloud Server</a>
             </li>
             <li>
                 <a href="/claudion/firewall">Firewalls</a>
             </li>
+
         </ul>
     </nav>
-    <!-- Sidebar ends -->
+</div>
 
-    <div id="content">
+    
+    <div class="table-sec">
+        <div class="main" >
         <div class="d-flex justify-content-between " id="div-space">
             <h2>Inbound Rules</h2>
             <a href="/claudion/add_inbound"><button class="btn btn-primary active " id="create-btn">Add Inbound
@@ -45,7 +50,7 @@
                     <td>{{data.port_max}}</td>
                     <td>{{data.port_min}}</td>
                     <td>{{data.description}}</td>
-                    <td><a class="btn btn-primary btn-sm" id="button1">Delete</a></td>
+                    <td><a class="btn btn-primary btn-sm delt-btn" id="button1">Delete</a></td>
 
 
                 </tr>
@@ -82,13 +87,16 @@
                 <td>{{datam.port_min}}</td>
                 <td>{{datam.description}}</td>
 
-                <td><a class="btn btn-primary btn-sm">Delete</a></td>
+                <td><a class="btn btn-primary btn-sm delt-btn">Delete</a></td>
 
             </tr>
             {%endfor%}
         </table>
         <!-- Table content ends -->
+
     </div>
 
 </div>
 </div>
+
+
