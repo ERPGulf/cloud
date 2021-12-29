@@ -1,0 +1,80 @@
+<!-- code for banner starts -->
+<div class="jumbotron">
+    <h1 class="display-4">Questions</h1>
+    <p class="lead">Got a question ? We're here to answer</p>
+    <hr class="my-4">
+    <p>If you don't see your question here.Feel free to drop us a line</p>
+    <p class="lead">
+     
+      <input class="form-control form-control-lg" id="searchbar"  type="text" placeholder="Search Questions">
+    </p>
+     <a class="btn btn-primary btn-lg" id="search_qn" role="button">Search Question</a>
+  </div>
+  
+<!-- code for banner ends -->
+  <a class="btn btn-primary btn-lg" id="button1" href="/askquestion.html" role="button">Ask a Question</a>
+  <br>
+  <br>
+  <div>
+      <!-- list displaying questions -->
+    <ol>
+  {% for q in question %}
+
+    <li class="question" id="titlee" onclick="gettitle()" ><a href="/answer.html?title={{q.question_title}}">{{q.question_title}}</a></li>
+    <span class="question" >{{q.question_body}}</span>
+    {% endfor %}
+</ol>
+</div>
+<div>
+
+  <!-- list displaying search results -->
+    <ul id="searchList"><a id="link"></a></ul>
+    <span></span>
+    </div>
+    <!-- pagination code -->
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="site-pagination">
+            {% if prev %}
+            <a href="/questionlist/?page={{prev}}" class="btn btn-outline-primary">Previous</a>
+            {% endif %}
+            {% if next %}
+            <a href="/questionlist/?page={{next}}" class="btn btn-outline-primary">Next</a>
+            {% endif %}
+            <br>
+    </div>
+</div>
+
+ <hr>
+ <!-- footer starts -->
+  <div class="footer-dark">
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Cloud</a></li>
+                        <li><a href="#">Development</a></li>
+                        <li><a href="#">Hosting</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#">Company</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 item text">
+                    <h3>Claudion</h3>
+                    <p>We provide fastest cloud servers in the Gulf.Hardened for security.Optimized for speed in Lowest price.Hosted in Gulf.</p>
+                </div>
+                <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+            </div>
+            <p class="copyright">Claudion © 2015</p>
+        </div>
+    </footer>
+</div>
+<!-- footer ends !-->
